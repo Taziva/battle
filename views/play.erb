@@ -7,11 +7,17 @@
   <h1><%=@game.player_2.name%></h1>
   <p id="p2_hp"><%=@game.player_2.hitpoints%> HP</p>
 </div>
-
+<% if !@game.game_won? %>
 <div class="">
   <a href="/attack" id="attack_button">Attack</a>
 </div>
+<% end %>
 
+<% if @game.game_won? %>
+<div class="">
+  <a href="/" id="reset_button">Reset</a>
+</div>
+<% end %>
 <div id="game_messages" class="">
   <ul>
     <%= @message_log.messages.map { |message| "<li>#{message}</li>" }.join %>
